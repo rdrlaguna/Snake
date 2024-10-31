@@ -1,0 +1,10 @@
+/* Add styles for index.html */
+
+#canvas1 {
+    position: absolute;
+    background: red;
+    width: 80%;
+    height: 80%;
+    top: 0;
+    left: 0;
+}
