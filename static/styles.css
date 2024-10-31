@@ -6,6 +6,14 @@
 }
 */
 
+:root {
+    --body-background: rgb(40,40,40);
+    --main-background: rgb(20,20,20);
+    
+    --font-color: rgb(220,220,220);
+    --font-hover: rgb(180,180,180);
+}
+
 /* .......... Standarize styles .......... */
 *, ::before, ::after {
     margin: 0;
@@ -16,13 +24,13 @@
 body {
     font-size: 16px;
 
-    background-color: rgb(40,40,40);
-    color: rgb(220,220,220);
+    background-color: var(--body-background);
+    color: var(--font-color);
 }
 
 a, a:hover {
     text-decoration: none;
-    color: rgb(220,220,220);
+    color: var(--font-color);
 }
 
 
@@ -61,12 +69,12 @@ nav {
 
 .nav-link:hover {
     text-decoration: underline;
-    color: rgb(180,180,180);
+    color: var(--font-hover);
 }
 
 /* .......... M A I N .......... */
 
 main {
     height: 80vh;
-    background-color: rgb(20,20,20);
+    background-color: var(--main-background);
 }
