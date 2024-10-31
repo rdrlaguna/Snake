@@ -1,6 +1,22 @@
 /* Common stylesheet for all pages */
 
-/* .......... Standarize styles .......... */
+/*
+* {
+    border: 1px solid red;
+}
+*/
+
+:root {
+    --body-background: rgb(40,40,40);
+    --main-background: rgb(20,20,20);
+    
+    --font-color: rgb(220,220,220);
+    --font-hover: rgb(180,180,180);
+}
+
+
+/* --------------------  S T A N D A R I Z E ----------------------- */
+
 *, ::before, ::after {
     margin: 0;
     padding: 0;
@@ -8,6 +24,75 @@
 }
 
 body {
-    background-color: rgb(40,40,40);
-    color: rgb(220,220,220);
+    width: 100%;
+    height: 100vh;
+    font-size: 16px;
+
+    background-color: var(--body-background);
+    color: var(--font-color);
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+
+/* ..... F L E X    C L A S S E S ..... */
+/* Display flex */
+.flex {
+    display: flex
+}
+/* Center */
+.f-cntr {
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* --------------------  H E A D E R    T A G S -------------------- */
+
+header {
+    height: 10vh;
+}
+
+nav {
+    height: 100%;
+    width: 80%;
+}
+
+.nav-list {
+    height: 50%;
+
+}
+
+.nav-list > li {
+    list-style: none;
+    width: 50%;
+    
+}
+
+.nav-link {
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    color: var(--font-hover);
+}
+
+
+/* --------------------  M A I N    T A G S ------------------------ */
+
+main {
+    height: 80vh;
+}
+
+.frame {
+    width: 80%;
+    height: 100%;
+
+    background-color: var(--main-background);
+    border: 2px solid var(--font-hover)
 }

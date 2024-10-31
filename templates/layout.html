@@ -9,11 +9,18 @@
     </head>
     <body>
         <header>
-
+            <nav>
+                <ul class="nav-list flex">
+                    <li class="flex f-cntr"><a class="nav-link" href="/">GAME</a></li>
+                    <li class="flex f-cntr"><a class="nav-link" href="/scores">SCORES</a></li>
+                </ul>
+            </nav>
         </header>
-        <main>
-            {% block main %}
-            {% endblock %}
+        <main class="flex f-cntr">
+            <div class="frame">
+                {% block main %}
+                {% endblock %}
+            </div>
         </main>
         <footer>
     
