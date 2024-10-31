@@ -33,9 +33,21 @@ a, a:hover {
     color: var(--font-color);
 }
 
+/* ..... F L E X    C L A S S E S ..... */
+/* Display flex */
+.flex {
+    display: flex
+}
+/* Center */
+.f-cntr {
+    justify-content: center;
+    align-items: center;
+}
 
 
-/* .......... H E A D E R .......... */
+
+
+/* --------------------  H E A D E R    T A G S -------------------- */
 
 header {
     height: 10vh;
@@ -47,16 +59,11 @@ nav {
 }
 
 .nav-list {
-    display: flex;
     height: 50%;
 
 }
 
 .nav-list > li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     list-style: none;
     width: 50%;
     
@@ -72,7 +79,8 @@ nav {
     color: var(--font-hover);
 }
 
-/* .......... M A I N .......... */
+
+/* --------------------  M A I N    T A G S ------------------------ */
 
 main {
     height: 80vh;
