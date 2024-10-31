@@ -1,7 +1,15 @@
 {% extends "layout.html" %}
 
+{% block links %}
+
+    <link rel="stylesheet" href="../static/index.css">
+
+{% endblock %}
+
 {% block main %}
 
-<h1>Build game here</h1>
+   <canvas id="canvas1"></canvas>
+
+   <script src="../static/snake.js"></script>
 
 {% endblock %}
