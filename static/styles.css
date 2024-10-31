@@ -1,5 +1,11 @@
 /* Common stylesheet for all pages */
 
+/*
+* {
+    border: 1px solid red;
+}
+*/
+
 /* .......... Standarize styles .......... */
 *, ::before, ::after {
     margin: 0;
@@ -8,6 +14,59 @@
 }
 
 body {
+    font-size: 16px;
+
     background-color: rgb(40,40,40);
     color: rgb(220,220,220);
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: rgb(220,220,220);
+}
+
+
+
+/* .......... H E A D E R .......... */
+
+header {
+    height: 10vh;
+}
+
+nav {
+    height: 100%;
+    width: 80%;
+}
+
+.nav-list {
+    display: flex;
+    height: 50%;
+
+}
+
+.nav-list > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    list-style: none;
+    width: 50%;
+    
+}
+
+.nav-link {
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    color: rgb(180,180,180);
+}
+
+/* .......... M A I N .......... */
+
+main {
+    height: 80vh;
+    background-color: rgb(20,20,20);
 }
