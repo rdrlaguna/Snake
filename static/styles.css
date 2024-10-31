@@ -14,7 +14,9 @@
     --font-hover: rgb(180,180,180);
 }
 
-/* .......... Standarize styles .......... */
+
+/* --------------------  S T A N D A R I Z E ----------------------- */
+
 *, ::before, ::after {
     margin: 0;
     padding: 0;
@@ -22,6 +24,8 @@
 }
 
 body {
+    width: 100%;
+    height: 100vh;
     font-size: 16px;
 
     background-color: var(--body-background);
@@ -33,6 +37,7 @@ a, a:hover {
     color: var(--font-color);
 }
 
+
 /* ..... F L E X    C L A S S E S ..... */
 /* Display flex */
 .flex {
@@ -43,8 +48,6 @@ a, a:hover {
     justify-content: center;
     align-items: center;
 }
-
-
 
 
 /* --------------------  H E A D E R    T A G S -------------------- */
@@ -84,5 +87,12 @@ nav {
 
 main {
     height: 80vh;
+}
+
+.frame {
+    width: 80%;
+    height: 100%;
+
     background-color: var(--main-background);
+    border: 2px solid var(--font-hover)
 }
