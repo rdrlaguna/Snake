@@ -17,11 +17,9 @@ window.addEventListener('resize', function() {
 
 // Represent snake using coordinates
 let snake = [
-    {x: 150, y: 150},
-    {x: 140, y: 150},
-    {x: 130, y: 150},
-    {x: 120, y: 150},
-    {x: 110, y: 150},
+    {x: 470, y: 470},
+    {x: 460, y: 470},
+    {x: 450, y: 470},
 ];
 
 // Draws snake parts
@@ -38,3 +36,32 @@ function drawSnake() {
 }
 
 drawSnake();
+
+// Enable snake move horizontally
+function advance() {
+    // Create new head
+    const head ={x: snake[0].x + 10, y: snake[0].y}
+    // Insert new head
+    snake.unshift(head);
+    // Remove tail
+    snake.pop();
+}
+
+// Clear canvas
+function clearCanvas() {
+    
+}
+
+
+// Listen for Right key
+document.addEventListener('keydown', function(event) {
+    console.log(event)
+    if (event.key === 'ArrowRight') {
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Move right
+        advance();
+        drawSnake();
+        // console.log(snake);
+    }
+}) 
