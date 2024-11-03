@@ -22,14 +22,8 @@
                     <li class="flex f-cntr"><a class="nav-link" href="/scores">SCORES</a></li>
                 </ul>
             </nav>
-            <ul class="stats flex">
-                <li class="">
-                    <h3>SCORE: <span>000</span></h3>
-                </li>
-                <li class="">
-                    <h3>TIME: <span>00:00</span></h3>
-                </li>
-            </ul>
+            {% block stats %}
+            {% endblock %}
         </header>
         <main class="flex f-cntr">
             <div class="frame">
@@ -38,9 +32,8 @@
             </div>
         </main>
         <footer>
-            <div id="record">
-                <h5>RECORD: <span>xxxx in xx:xx by XXX</span></h5> 
-            </div>
+            {% block record %}
+            {% endblock %}
         </footer>
     </body>
 </html>
