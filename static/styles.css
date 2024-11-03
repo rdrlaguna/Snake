@@ -34,6 +34,10 @@ body {
     color: var(--font-color);
 }
 
+ul, ol {
+    list-style: none;
+}
+
 a, a:hover {
     text-decoration: none;
     color: var(--font-color);
@@ -50,6 +54,10 @@ a, a:hover {
     justify-content: center;
     align-items: center;
 }
+/* Columns */
+.f-col {
+    flex-direction: column;
+}
 
 
 /* --------------------  H E A D E R    T A G S -------------------- */
@@ -58,21 +66,22 @@ header {
     height: 15vh;
 }
 
-nav {
-    height: 80%;
+nav,
+.stats {
     width: 80%;
     margin: 0 auto;
 }
 
+nav {
+    height: 80%;
+}
+
 .nav-list {
     height: 100%;
-
 }
 
 .nav-list > li {
-    list-style: none;
     width: 50%;
-    
 }
 
 .nav-link {
@@ -86,6 +95,12 @@ nav {
     color: var(--font-hover);
 }
 
+.stats {
+    height: 20%;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    letter-spacing: 0.2rem;
+}
 
 /* --------------------  M A I N    T A G S ------------------------ */
 
@@ -99,4 +114,19 @@ main {
 
     background-color: var(--main-background);
     border: 6px solid var(--frame-border)
+}
+
+/* --------------------  F O O T E R    T A G S -------------------- */
+
+footer {
+    padding-top: 0.5rem;
+    height: 10vh;
+    width: 100%;
+}
+
+#record {
+    margin-top: 3rem;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 0.9rem;
 }

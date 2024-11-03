@@ -6,7 +6,7 @@
         <meta name="viewport" content="initial-scale=1, width=device-width">
 
         <link rel="stylesheet" href="../static/styles.css">
-        
+
         <!-- https://developers.google.com/fonts/docs/css2?hl=es-419 -->
         <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Press+Start+2P">
@@ -16,12 +16,20 @@
     </head>
     <body>
         <header>
-            <nav>
+            <nav class="flex f-col">
                 <ul class="nav-list flex">
                     <li class="flex f-cntr"><a class="nav-link" href="/">GAME</a></li>
                     <li class="flex f-cntr"><a class="nav-link" href="/scores">SCORES</a></li>
                 </ul>
             </nav>
+            <ul class="stats flex">
+                <li class="">
+                    <h3>SCORE: <span>000</span></h3>
+                </li>
+                <li class="">
+                    <h3>TIME: <span>00:00</span></h3>
+                </li>
+            </ul>
         </header>
         <main class="flex f-cntr">
             <div class="frame">
@@ -30,7 +38,9 @@
             </div>
         </main>
         <footer>
-    
+            <div id="record">
+                <h5>RECORD: <span>xxxx in xx:xx by XXX</span></h5> 
+            </div>
         </footer>
     </body>
 </html>
