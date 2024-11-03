@@ -1,40 +1,64 @@
-// Find canvas element
-const canvas = document.getElementById('canvas1');
+// Library functions for the Snake project
 
-// Create a context object
-const ctx = canvas.getContext('2d');
+/**
+ * Draw a complete snake on canvas.
+ * 
+ * This function iterates through a list of coordinate objects and,
+ * for each one, uses the given coordinates (x, y) and draws a square on
+ * the provided canvas context. It does not return any value.
+ *
+ * @param {{x: number, y: number}[]} snake - An array of objects, each with 'x' and 'y' coordianates.
+ * @param {CanvasRenderingContext2D} ctx - The canvas to draw on.
+ * @returns {void}
+ */
+function drawSnake(snake, ctx) {
 
-// Set canvas to window size,. Prevents re-scaling
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight; 
-
-window.addEventListener('resize', function() {
-    // Adjust canvas size when window is resized
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight; 
-})
-
-
-// Represent snake using coordinates
-let snake = [
-    {x: 150, y: 150},
-    {x: 140, y: 150},
-    {x: 130, y: 150},
-    {x: 120, y: 150},
-    {x: 110, y: 150},
-];
-
-// Draws snake parts
-function drawSnakePart(snakePart) {
-    ctx.fillStyle = 'lightgreen';
-    ctx.strokestyle = 'darkgreen';
-    ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
-    ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
+    for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = 'lightgreen';
+        ctx.strokestyle = 'darkgreen';
+        ctx.fillRect(snake[i].x, snake[i].y, 10, 10);
+        ctx.strokeRect(snake[i].x, snake[i].y, 10, 10);
+    }
 }
 
-// Prints snake parts on canvas
-function drawSnake() {
-    snake.forEach(drawSnakePart);
+
+/**
+ * Delete previously drawn content on canvas.
+ * 
+ * This function calls the 'clearRect' method on the context object to 
+ * eliminate all forms and shapes on the canvas. It does not return any value.
+ *
+ * @param {CanvasRenderingContext2D} ctx - The canvas to clear.
+ * @param {canvas} canvas - The html canvas element.
+ * @returns {void}
+ */
+function clearCanvas(ctx, canvas) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-drawSnake();
+
+/**
+ * Allow snake move to the right.
+ * 
+ * This function inserts a new coordinate object to the array, incrementing the
+ * x value by 10 pixels, respecting the first object in the array. It then eliminates
+ * the last coordinate object. It does not return any value.
+ *
+ * @param {{x: number, y: number}} snake - An array of objects, each with 'x' and 'y' coordianates.
+ * @returns {void}
+ */
+function advance(snake) {
+
+    const head ={x: snake[0].x + 10, y: snake[0].y}
+    snake.unshift(head);
+    snake.pop();
+}
+
+
+const snakeLibrary = {
+    drawSnake,
+    clearCanvas,
+    advance
+};
+
+export default snakeLibrary;
