@@ -28,20 +28,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Draw snake on canvas
     drawSnake(snake, context);
 
-    /*
+    
     // Listen for Right key
     document.addEventListener('keydown', function(event) {
         
         if (event.key === 'ArrowRight') {
             // Clear canvas
-            clearCanvas(ctx);
+            clearCanvas(context, canvas);
             // Move right
             advance(snake);
-            drawSnake(snake);
+            drawSnake(snake, context);
             // console.log(snake);
         }
     }) 
-    */
+    
 
 })
 
@@ -72,17 +72,18 @@ function drawSnake(snake, ctx) {
 /**
  * Delete previously drawn content on canvas.
  * 
- * This function calle the .clearRect() method on the context object
- * to eliminate all forms and shapes on the canvas. It does not return any value.
+ * This function calls the 'clearRect' method on the context object to 
+ * eliminate all forms and shapes on the canvas. It does not return any value.
  *
  * @param {CanvasRenderingContext2D} ctx - The canvas to clear.
+ * @param {canvas} canvas - The html canvas element.
  * @returns {void}
  */
-function clearCanvas(ctx) {
+function clearCanvas(ctx, canvas) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-/*
+
 // Enable snake move horizontally
 function advance(snake) {
     // Create new head
@@ -92,8 +93,4 @@ function advance(snake) {
     // Remove tail
     snake.pop();
 }
-
-
-
-*/
 
