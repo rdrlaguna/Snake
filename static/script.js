@@ -52,21 +52,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Listen for Right key
     document.addEventListener('keydown', function(event) {
         
-        console.log(speed);
+ 
+        switch(event.key) {
+            case 'ArrowUp':
+                speed = {x: 0, y: -10};
+                break;
 
-        if (event.key ==='ArrowUp') {
-            // Set speed variable
-            speed = {x: 0, y: -10};
-        }
-        else if (event.key === 'ArrowRight') {
-            // Set speed variable
-            speed = {x: 10, y: 0};
-        }
-        else if (event.key === 'ArrowDown') {
-            speed = {x: 0, y: 10};
-        }
-        else if (event.key === 'ArrowLeft') {
-            speed = {x: -10, y: 0};
+            case 'ArrowRight':
+                speed = {x: 10, y: 0};
+                break;
+
+            case 'ArrowDown':
+                speed = {x: 0, y: 10};
+                break;
+
+            case 'ArrowLeft':
+                speed = {x: -10, y: 0};
+                break;
+
+            default:
+                speed = {x: 0, y: 0};
         }
 
         Snake.clearCanvas(context, canvas);
