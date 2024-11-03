@@ -40,17 +40,19 @@ function clearCanvas(ctx, canvas) {
 /**
  * Allow snake move to the right.
  * 
- * This function inserts a new coordinate object to the array, incrementing the
- * x value by 10 pixels, respecting the first object in the array. It then eliminates
- * the last coordinate object. It does not return any value.
+ * This function inserts a new coordinate object to the array, changing 
+ * the x or y values, respecting the first object in the array. This 
+ * modifies the snake direccion. It then eliminates the last coordinate
+ * object. It does not return any value.
  *
  * @param {{x: number, y: number}[]} snake - An array of objects, each with 'x' and 'y' coordinates.
  * @param {HTMLCanvasElement} canvas - An html canvas element.
+ * @param {{x:number, y:number}} speed - An object with 'x' and 'y' coordinates, representing direction.
  * @returns {void}
  */
-function advance(snake, canvas) {
+function advance(snake, canvas, speed) {
 
-    const head ={x: snake[0].x + 10, y: snake[0].y}
+    const head ={x: snake[0].x + speed.x, y: snake[0].y + speed.y}
 
     // Check if hits wall
     const topWall = 0;
