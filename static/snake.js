@@ -55,10 +55,10 @@ function advance(snake) {
 }
 
 
-const snakeLibrary = {
+const Snake = {
     drawSnake,
     clearCanvas,
     advance
 };
 
-export default snakeLibrary;
+export default Snake;

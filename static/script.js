@@ -1,4 +1,4 @@
-import snakeLibrary from "./snake.js";
+import Snake from "./snake.js";
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             {x: initialX, y: initialY},
             {x: initialX - 10, y: initialY},
         ];
-        snakeLibrary.drawSnake(snake, context);
+        Snake.drawSnake(snake, context);
     })
 
     // Set initial coordinates
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // Draw snake on canvas
-    snakeLibrary.drawSnake(snake, context);
+    Snake.drawSnake(snake, context);
 
     
     // Listen for Right key
@@ -52,13 +52,27 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (event.key === 'ArrowRight') {
             // Clear canvas
-            snakeLibrary.clearCanvas(context, canvas);
+            Snake.clearCanvas(context, canvas);
             // Move right
-            snakeLibrary.advance(snake);
-            snakeLibrary.drawSnake(snake, context);
+            Snake.advance(snake);
+            Snake.drawSnake(snake, context);
             // console.log(snake);
         }
     }) 
     
 })
 
+/*
+function didGameEnd() {  
+    for (let i = 4; i < snake.length; i++) {    
+        const didCollide = snake[i].x === snake[0].x && snake[i].y === snake[0].y
+        if (didCollide) return true  
+    }
+
+    const hitLeftWall = snake[0].x < 0; 
+    const hitRightWall = snake[0].x > gameCanvas.width - 10;  
+    const hitToptWall = snake[0].y &lt; 0;  
+    const hitBottomWall = snake[0].y > gameCanvas.height - 10;
+    return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
+}
+*/
