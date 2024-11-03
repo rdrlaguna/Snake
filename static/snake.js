@@ -7,7 +7,7 @@
  * for each one, uses the given coordinates (x, y) and draws a square on
  * the provided canvas context. It does not return any value.
  *
- * @param {{x: number, y: number}[]} snake - An array of objects, each with 'x' and 'y' coordianates.
+ * @param {{x: number, y: number}[]} snake - An array of objects, each with 'x' and 'y' coordinates.
  * @param {CanvasRenderingContext2D} ctx - The canvas to draw on.
  * @returns {void}
  */
@@ -29,7 +29,7 @@ function drawSnake(snake, ctx) {
  * eliminate all forms and shapes on the canvas. It does not return any value.
  *
  * @param {CanvasRenderingContext2D} ctx - The canvas to clear.
- * @param {canvas} canvas - The html canvas element.
+ * @param {HTMLCanvasElement} canvas - An html canvas element.
  * @returns {void}
  */
 function clearCanvas(ctx, canvas) {
@@ -44,14 +44,55 @@ function clearCanvas(ctx, canvas) {
  * x value by 10 pixels, respecting the first object in the array. It then eliminates
  * the last coordinate object. It does not return any value.
  *
- * @param {{x: number, y: number}} snake - An array of objects, each with 'x' and 'y' coordianates.
+ * @param {{x: number, y: number}} snake - An array of objects, each with 'x' and 'y' coordinates.
+ * @param {HTMLCanvasElement} canvas - An html canvas element.
  * @returns {void}
  */
-function advance(snake) {
+function advance(snake, canvas) {
 
     const head ={x: snake[0].x + 10, y: snake[0].y}
+
+    // Check if hits wall
+    const topWall = 0;
+    const rightWall = canvas.width - 10;
+    const bottomWall = canvas.height -10;
+    const leftWall =  0;
+    
+    if (didHitWall(head, canvas)) {
+        alert("You've hitted a Wall")
+        return
+    }
+
     snake.unshift(head);
     snake.pop();
+}
+
+
+/**
+ * Check if the head of the snake hits a wall.
+ * 
+ * This function takes snakes's head position and the canvas as parameters,
+ * and evaluates if the head hits any wall when the snake advances.
+ * It returns 'true' or 'false'.
+ *
+ * @param {{x: number, y: number}} head - An object with 'x' and 'y' coordinates.
+ * @param {HTMLCanvasElement} canvas - An html canvas element.
+ * @returns {boolean} - Returns 'true' when the head hits a wall, 'false' if it does not.
+ */
+function didHitWall(head, canvas) {
+    const topWall = 0;
+    const rightWall = canvas.width - 10;
+    const bottomWall = canvas.height -10;
+    const leftWall =  0;
+    
+    if (head.x > rightWall ||
+        head.x < topWall ||
+        head.y > bottomWall ||
+        head.y < leftWall
+    ) {
+        return true
+    }
+    return false
 }
 
 

@@ -54,25 +54,22 @@ document.addEventListener('DOMContentLoaded', function() {
             // Clear canvas
             Snake.clearCanvas(context, canvas);
             // Move right
-            Snake.advance(snake);
+            Snake.advance(snake, canvas);
             Snake.drawSnake(snake, context);
             // console.log(snake);
         }
     }) 
-    
+
 })
 
-/*
-function didGameEnd() {  
-    for (let i = 4; i < snake.length; i++) {    
-        const didCollide = snake[i].x === snake[0].x && snake[i].y === snake[0].y
-        if (didCollide) return true  
-    }
 
-    const hitLeftWall = snake[0].x < 0; 
-    const hitRightWall = snake[0].x > gameCanvas.width - 10;  
-    const hitToptWall = snake[0].y &lt; 0;  
-    const hitBottomWall = snake[0].y > gameCanvas.height - 10;
-    return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
+function didHitWall(canvas, snake) {
+    const topWall = 0;
+    const rightWall = canvas.width - 10;
+    const bottomWall = canvas.height -10;
+    const leftWall =  0;
+
+    if (snake[0].x > rightWall) {
+        alert("You've hitted the right wall!")
+    }
 }
-*/
