@@ -47,36 +47,47 @@ document.addEventListener('DOMContentLoaded', function() {
     Snake.drawSnake(snake, context);
 
     // Initialize speed variable
-    let speed = {x: 0, y: 0};
-    
+    let speed = {x: 10, y: 0};
+
     // Listen for Right key
     document.addEventListener('keydown', function(event) {
         
- 
         switch(event.key) {
             case 'ArrowUp':
-                speed = {x: 0, y: -10};
+                speed.x = 0;
+                speed.y = -10;
                 break;
 
             case 'ArrowRight':
-                speed = {x: 10, y: 0};
+                speed.x = 10;
+                speed.y = 0;
                 break;
 
             case 'ArrowDown':
-                speed = {x: 0, y: 10};
+                speed.x = 0;
+                speed.y = 10;
                 break;
 
             case 'ArrowLeft':
-                speed = {x: -10, y: 0};
+                speed.x = -10;
+                speed.y = 0;
                 break;
 
             default:
-                speed = {x: 0, y: 0};
+                speed.x = 10;
+                speed.y = 0;
         }
-
-        Snake.clearCanvas(context, canvas);
-        // Move right
-        Snake.advance(snake, canvas, speed);
-        Snake.drawSnake(snake, context);
     }) 
+
+    motion(snake, canvas, context, speed);
+    
 })
+
+function motion(snake, canvas, ctx, speed) { 
+    setInterval(function () {
+        console.log(speed);
+        Snake.clearCanvas(ctx, canvas);   
+        Snake.advance(snake, canvas, speed);    
+        Snake.drawSnake(snake, ctx); 
+    }, 300);
+}
