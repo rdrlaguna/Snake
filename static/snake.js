@@ -47,25 +47,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-// Draws snake parts
-function drawSnakePart(snakePart, ctx) {
-    ctx.fillStyle = 'lightgreen';
-    ctx.strokestyle = 'darkgreen';
-    ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
-    ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
-}
-
-// Prints snake parts on canvas
-function drawSnake(snake, ctx,) {
+/**
+ * Draw a complete snake on canvas.
+ * 
+ * This function iterates through a list of coordinate objects and,
+ * for each one, uses the given coordinates (x, y) and draws a square on
+ * the provided canvas context. It does not return any value.
+ *
+ * @param {{x: number, y: number}[]} snake - An array of objects, each with 'x' and 'y' coordianates.
+ * @param {CanvasRenderingContext2D} ctx - The canvas to draw on.
+ * @returns {void}
+ */
+function drawSnake(snake, ctx) {
 
     for (i = 0; i < snake.length; i++) {
-        drawSnakePart(snake[i], ctx);
+        ctx.fillStyle = 'lightgreen';
+        ctx.strokestyle = 'darkgreen';
+        ctx.fillRect(snake[i].x, snake[i].y, 10, 10);
+        ctx.strokeRect(snake[i].x, snake[i].y, 10, 10);
     }
-    
-    //snake.forEach(drawSnakePart());
 }
+
 
 /*
 // Enable snake move horizontally
