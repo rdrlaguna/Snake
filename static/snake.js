@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         canvas.height = window.innerHeight; 
     })
 
-
     // Represent snake using coordinates
     let snake = [
         {x: 470, y: 470},
@@ -26,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {x: 450, y: 470},
     ];
 
+    // Draw snake on canvas
     drawSnake(snake, context);
 
     /*
@@ -69,6 +69,19 @@ function drawSnake(snake, ctx) {
 }
 
 
+/**
+ * Delete previously drawn content on canvas.
+ * 
+ * This function calle the .clearRect() method on the context object
+ * to eliminate all forms and shapes on the canvas. It does not return any value.
+ *
+ * @param {CanvasRenderingContext2D} ctx - The canvas to clear.
+ * @returns {void}
+ */
+function clearCanvas(ctx) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
 /*
 // Enable snake move horizontally
 function advance(snake) {
@@ -80,10 +93,7 @@ function advance(snake) {
     snake.pop();
 }
 
-// Clear canvas
-function clearCanvas(ctx) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+
 
 */
 
