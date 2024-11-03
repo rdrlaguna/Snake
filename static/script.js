@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create a context object
     const context = canvas.getContext('2d');
 
-    // Set canvas to window size,. Prevents re-scaling
+    // Set canvas to window size. (Prevents re-scaling)
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight; 
 
