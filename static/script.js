@@ -57,19 +57,21 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.key ==='ArrowUp') {
             // Set speed variable
             speed = {x: 0, y: -10};
-            Snake.clearCanvas(context, canvas);
-            // Move right
-            Snake.advance(snake, canvas, speed);
-            Snake.drawSnake(snake, context);
         }
         else if (event.key === 'ArrowRight') {
             // Set speed variable
             speed = {x: 10, y: 0};
-            // Clear canvas
-            Snake.clearCanvas(context, canvas);
-            // Move right
-            Snake.advance(snake, canvas, speed);
-            Snake.drawSnake(snake, context);
         }
+        else if (event.key === 'ArrowDown') {
+            speed = {x: 0, y: 10};
+        }
+        else if (event.key === 'ArrowLeft') {
+            speed = {x: -10, y: 0};
+        }
+
+        Snake.clearCanvas(context, canvas);
+        // Move right
+        Snake.advance(snake, canvas, speed);
+        Snake.drawSnake(snake, context);
     }) 
 })
