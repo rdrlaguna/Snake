@@ -1,4 +1,4 @@
-import snakeLibrary from "./snake.js";
+import Snake from "./snake.js";
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
@@ -9,25 +9,42 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create a context object
     const context = canvas.getContext('2d');
 
-    // Set canvas to window size,. Prevents re-scaling
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight; 
+    // Set canvas size to html element size
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
 
-    window.addEventListener('resize', function() {
+    // Prevent re-scaling
+    window.addEventListener('resize', function(snake) {
     // Adjust canvas size when window is resized
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight; 
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+
+        // Set initial coordinates
+        const initialX = canvas.width / 2;
+        const initialY = canvas.height / 2;
+    
+        // Represent snake using coordinates
+        snake = [
+            {x: initialX + 10, y: initialY},
+            {x: initialX, y: initialY},
+            {x: initialX - 10, y: initialY},
+        ];
+        Snake.drawSnake(snake, context);
     })
 
+    // Set initial coordinates
+    const initialX = canvas.width / 2;
+    const initialY = canvas.height / 2;
+    
     // Represent snake using coordinates
     let snake = [
-        {x: 470, y: 470},
-        {x: 460, y: 470},
-        {x: 450, y: 470},
+        {x: initialX + 10, y: initialY},
+        {x: initialX, y: initialY},
+        {x: initialX - 10, y: initialY},
     ];
 
     // Draw snake on canvas
-    snakeLibrary.drawSnake(snake, context);
+    Snake.drawSnake(snake, context);
 
     
     // Listen for Right key
@@ -35,12 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (event.key === 'ArrowRight') {
             // Clear canvas
-            snakeLibrary.clearCanvas(context, canvas);
+            Snake.clearCanvas(context, canvas);
             // Move right
-            snakeLibrary.advance(snake);
-            snakeLibrary.drawSnake(snake, context);
-            // console.log(snake);
+            Snake.advance(snake, canvas);
+            Snake.drawSnake(snake, context);
+
         }
     }) 
-    
+
 })
