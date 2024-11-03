@@ -30,3 +30,7 @@
     margin: 0 auto;
     font-size: 0.9rem;
 }
+
+#record > h5 {
+    text-align: right;
+}
