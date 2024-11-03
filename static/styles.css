@@ -9,6 +9,7 @@
 :root {
     --body-background: rgb(40,40,40);
     --main-background: rgb(20,20,20);
+    --frame-border: rgb(120, 120, 120);
     
     --font-color: rgb(140,140,140); 
     --font-hover: rgb(220,220,220);
@@ -97,5 +98,5 @@ main {
     height: 100%;
 
     background-color: var(--main-background);
-    border: 2px solid var(--font-color)
+    border: 6px solid var(--frame-border)
 }
