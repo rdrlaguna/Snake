@@ -9,9 +9,10 @@
 :root {
     --body-background: rgb(40,40,40);
     --main-background: rgb(20,20,20);
+    --frame-border: rgb(120, 120, 120);
     
-    --font-color: rgb(220,220,220);
-    --font-hover: rgb(180,180,180);
+    --font-color: rgb(140,140,140); 
+    --font-hover: rgb(220,220,220);
 }
 
 
@@ -26,10 +27,15 @@
 body {
     width: 100%;
     height: 100vh;
+    font-family: 'Press Start 2P', sans-serif;
     font-size: 16px;
 
     background-color: var(--body-background);
     color: var(--font-color);
+}
+
+ul, ol {
+    list-style: none;
 }
 
 a, a:hover {
@@ -48,32 +54,38 @@ a, a:hover {
     justify-content: center;
     align-items: center;
 }
+/* Columns */
+.f-col {
+    flex-direction: column;
+}
 
 
 /* --------------------  H E A D E R    T A G S -------------------- */
 
 header {
-    height: 10vh;
+    height: 15vh;
 }
 
 nav {
-    height: 100%;
     width: 80%;
+    margin: 0 auto;
+}
+
+nav {
+    height: 80%;
 }
 
 .nav-list {
-    height: 50%;
-
+    height: 100%;
 }
 
 .nav-list > li {
-    list-style: none;
     width: 50%;
-    
 }
 
 .nav-link {
-    font-size: 1.5rem;
+    transform: translateY(0.3rem);
+    font-size: 2.5rem;
     letter-spacing: 0.2rem;
 }
 
@@ -83,10 +95,11 @@ nav {
 }
 
 
+
 /* --------------------  M A I N    T A G S ------------------------ */
 
 main {
-    height: 80vh;
+    height: 75vh;
 }
 
 .frame {
@@ -94,5 +107,13 @@ main {
     height: 100%;
 
     background-color: var(--main-background);
-    border: 2px solid var(--font-hover)
+    border: 6px solid var(--frame-border)
+}
+
+/* --------------------  F O O T E R    T A G S -------------------- */
+
+footer {
+    padding-top: 0.5rem;
+    height: 10vh;
+    width: 100%;
 }

@@ -14,3 +14,23 @@
     top: 0;
     left: 0;
 }
+
+.stats {
+    width: 80%;
+    margin: 0 auto;
+    height: 20%;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    letter-spacing: 0.2rem;
+}
+
+#record {
+    margin-top: 3rem;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 0.9rem;
+}
+
+#record > h5 {
+    text-align: right;
+}

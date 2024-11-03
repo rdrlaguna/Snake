@@ -7,17 +7,23 @@
 
         <link rel="stylesheet" href="../static/styles.css">
 
+        <!-- https://developers.google.com/fonts/docs/css2?hl=es-419 -->
+        <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P">
+
         {% block links %}
         {% endblock %}
     </head>
     <body>
         <header>
-            <nav>
+            <nav class="flex f-col">
                 <ul class="nav-list flex">
                     <li class="flex f-cntr"><a class="nav-link" href="/">GAME</a></li>
                     <li class="flex f-cntr"><a class="nav-link" href="/scores">SCORES</a></li>
                 </ul>
             </nav>
+            {% block stats %}
+            {% endblock %}
         </header>
         <main class="flex f-cntr">
             <div class="frame">
@@ -26,7 +32,8 @@
             </div>
         </main>
         <footer>
-    
+            {% block record %}
+            {% endblock %}
         </footer>
     </body>
 </html>
