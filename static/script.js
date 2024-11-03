@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Move right
             Snake.advance(snake, canvas);
             Snake.drawSnake(snake, context);
-            // console.log(snake);
+
         }
     }) 
 
