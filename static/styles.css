@@ -10,8 +10,8 @@
     --body-background: rgb(40,40,40);
     --main-background: rgb(20,20,20);
     
-    --font-color: rgb(220,220,220);
-    --font-hover: rgb(140,140,140);
+    --font-color: rgb(140,140,140); 
+    --font-hover: rgb(220,220,220);
 }
 
 
@@ -54,17 +54,17 @@ a, a:hover {
 /* --------------------  H E A D E R    T A G S -------------------- */
 
 header {
-    height: 10vh;
+    height: 15vh;
 }
 
 nav {
-    height: 100%;
+    height: 80%;
     width: 80%;
     margin: 0 auto;
 }
 
 .nav-list {
-    height: 80%;
+    height: 100%;
 
 }
 
@@ -75,6 +75,7 @@ nav {
 }
 
 .nav-link {
+    transform: translateY(1rem);
     font-size: 2.5rem;
     letter-spacing: 0.2rem;
 }
@@ -88,7 +89,7 @@ nav {
 /* --------------------  M A I N    T A G S ------------------------ */
 
 main {
-    height: 80vh;
+    height: 75vh;
 }
 
 .frame {
@@ -96,5 +97,5 @@ main {
     height: 100%;
 
     background-color: var(--main-background);
-    border: 2px solid var(--font-hover)
+    border: 2px solid var(--font-color)
 }
