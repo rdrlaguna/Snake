@@ -48,9 +48,9 @@ function clearCanvas(ctx, canvas) {
  * @param {HTMLCanvasElement} canvas - An html canvas element.
  * @returns {void}
  */
-function advance(snake, canvas) {
+function advance(snake, canvas, speed) {
 
-    const head ={x: snake[0].x + 10, y: snake[0].y}
+    const head ={x: snake[0].x + speed.x, y: snake[0].y + speed.y}
 
     // Check if hits wall
     const topWall = 0;

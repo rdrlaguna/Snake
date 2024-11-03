@@ -46,18 +46,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // Draw snake on canvas
     Snake.drawSnake(snake, context);
 
+    // Initialize speed variable
+    let speed = {x: 0, y: 0};
     
     // Listen for Right key
     document.addEventListener('keydown', function(event) {
         
-        if (event.key === 'ArrowRight') {
+        console.log(speed);
+
+        if (event.key ==='ArrowUp') {
+            // Set speed variable
+            speed = {x: 0, y: -10};
+            Snake.clearCanvas(context, canvas);
+            // Move right
+            Snake.advance(snake, canvas, speed);
+            Snake.drawSnake(snake, context);
+        }
+        else if (event.key === 'ArrowRight') {
+            // Set speed variable
+            speed = {x: 10, y: 0};
             // Clear canvas
             Snake.clearCanvas(context, canvas);
             // Move right
-            Snake.advance(snake, canvas);
+            Snake.advance(snake, canvas, speed);
             Snake.drawSnake(snake, context);
-
         }
     }) 
-
 })
