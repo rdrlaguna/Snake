@@ -1,51 +1,4 @@
-
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', function() {
-
-    // Find canvas element
-    const canvas = document.getElementById('canvas1');
-
-    // Create a context object
-    const context = canvas.getContext('2d');
-
-    // Set canvas to window size,. Prevents re-scaling
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight; 
-
-    window.addEventListener('resize', function() {
-    // Adjust canvas size when window is resized
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight; 
-    })
-
-    // Represent snake using coordinates
-    let snake = [
-        {x: 470, y: 470},
-        {x: 460, y: 470},
-        {x: 450, y: 470},
-    ];
-
-    // Draw snake on canvas
-    drawSnake(snake, context);
-
-    
-    // Listen for Right key
-    document.addEventListener('keydown', function(event) {
-        
-        if (event.key === 'ArrowRight') {
-            // Clear canvas
-            clearCanvas(context, canvas);
-            // Move right
-            advance(snake);
-            drawSnake(snake, context);
-            // console.log(snake);
-        }
-    }) 
-    
-
-})
-
-
+// Library functions for the Snake project
 
 /**
  * Draw a complete snake on canvas.
@@ -60,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 function drawSnake(snake, ctx) {
 
-    for (i = 0; i < snake.length; i++) {
+    for (let i = 0; i < snake.length; i++) {
         ctx.fillStyle = 'lightgreen';
         ctx.strokestyle = 'darkgreen';
         ctx.fillRect(snake[i].x, snake[i].y, 10, 10);
@@ -84,13 +37,28 @@ function clearCanvas(ctx, canvas) {
 }
 
 
-// Enable snake move horizontally
+/**
+ * Allow snake move to the right.
+ * 
+ * This function inserts a new coordinate object to the array, incrementing the
+ * x value by 10 pixels, respecting the first object in the array. It then eliminates
+ * the last coordinate object. It does not return any value.
+ *
+ * @param {{x: number, y: number}} snake - An array of objects, each with 'x' and 'y' coordianates.
+ * @returns {void}
+ */
 function advance(snake) {
-    // Create new head
+
     const head ={x: snake[0].x + 10, y: snake[0].y}
-    // Insert new head
     snake.unshift(head);
-    // Remove tail
     snake.pop();
 }
 
+
+const snakeLibrary = {
+    drawSnake,
+    clearCanvas,
+    advance
+};
+
+export default snakeLibrary;
