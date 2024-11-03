@@ -61,15 +61,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }) 
 
 })
-
-
-function didHitWall(canvas, snake) {
-    const topWall = 0;
-    const rightWall = canvas.width - 10;
-    const bottomWall = canvas.height -10;
-    const leftWall =  0;
-
-    if (snake[0].x > rightWall) {
-        alert("You've hitted the right wall!")
-    }
-}
