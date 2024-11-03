@@ -1,29 +1,56 @@
-// Find canvas element
-const canvas = document.getElementById('canvas1');
 
-// Create a context object
-const ctx = canvas.getContext('2d');
+// Wait for DOM to load
+document.addEventListener('DOMContentLoaded', function() {
 
-// Set canvas to window size,. Prevents re-scaling
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight; 
+    // Find canvas element
+    const canvas = document.getElementById('canvas1');
 
-window.addEventListener('resize', function() {
-    // Adjust canvas size when window is resized
+    // Create a context object
+    const context = canvas.getContext('2d');
+
+    // Set canvas to window size,. Prevents re-scaling
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight; 
+
+    window.addEventListener('resize', function() {
+    // Adjust canvas size when window is resized
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight; 
+    })
+
+
+    // Represent snake using coordinates
+    let snake = [
+        {x: 470, y: 470},
+        {x: 460, y: 470},
+        {x: 450, y: 470},
+    ];
+
+    drawSnake(snake, context);
+
+    /*
+    // Listen for Right key
+    document.addEventListener('keydown', function(event) {
+        
+        if (event.key === 'ArrowRight') {
+            // Clear canvas
+            clearCanvas(ctx);
+            // Move right
+            advance(snake);
+            drawSnake(snake);
+            // console.log(snake);
+        }
+    }) 
+    */
+
 })
 
 
-// Represent snake using coordinates
-let snake = [
-    {x: 470, y: 470},
-    {x: 460, y: 470},
-    {x: 450, y: 470},
-];
+
+
 
 // Draws snake parts
-function drawSnakePart(snakePart) {
+function drawSnakePart(snakePart, ctx) {
     ctx.fillStyle = 'lightgreen';
     ctx.strokestyle = 'darkgreen';
     ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
@@ -31,14 +58,18 @@ function drawSnakePart(snakePart) {
 }
 
 // Prints snake parts on canvas
-function drawSnake() {
-    snake.forEach(drawSnakePart);
+function drawSnake(snake, ctx,) {
+
+    for (i = 0; i < snake.length; i++) {
+        drawSnakePart(snake[i], ctx);
+    }
+    
+    //snake.forEach(drawSnakePart());
 }
 
-drawSnake();
-
+/*
 // Enable snake move horizontally
-function advance() {
+function advance(snake) {
     // Create new head
     const head ={x: snake[0].x + 10, y: snake[0].y}
     // Insert new head
@@ -48,20 +79,9 @@ function advance() {
 }
 
 // Clear canvas
-function clearCanvas() {
-    
+function clearCanvas(ctx) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+*/
 
-// Listen for Right key
-document.addEventListener('keydown', function(event) {
-    console.log(event)
-    if (event.key === 'ArrowRight') {
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // Move right
-        advance();
-        drawSnake();
-        // console.log(snake);
-    }
-}) 
