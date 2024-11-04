@@ -46,14 +46,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Draw snake on canvas
     Snake.drawSnake(snake, context);
 
-    // Initialize speed variable
+    // Initialize game variables
     let speed = {x: 10, y: 0};
     let food = Snake.createFood(canvas, snake);
+    let score = {s: 0};
 
     const motion = setInterval( function() {
         Snake.clearCanvas(context, canvas);
         Snake.drawFood(food, context);  
-        Snake.advance(snake, canvas, speed, food);    
+        Snake.advance(snake, canvas, speed, food, score);    
         Snake.drawSnake(snake, context);
     }, 100);
 
