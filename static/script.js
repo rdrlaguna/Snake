@@ -48,17 +48,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize speed variable
     let speed = {x: 10, y: 0};
+    let food = Snake.createFood(canvas, snake);
 
     const motion = setInterval( function() {
-        Snake.clearCanvas(context, canvas);   
-        Snake.advance(snake, canvas, speed);    
-        Snake.drawSnake(snake, context); 
-    }, 200);
+        Snake.clearCanvas(context, canvas);
+        Snake.drawFood(food, context);  
+        Snake.advance(snake, canvas, speed, food);    
+        Snake.drawSnake(snake, context);
+    }, 100);
 
+    
     // Listen for a pressed key
     document.addEventListener('keydown', function(event) {
-
-        console.log(event)
         
         switch(event.key) {
             case 'ArrowUp':
@@ -90,8 +91,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 speed.y = 0;
                 break;
         }
-    }) 
+    })
 
-
-    
 })
+
+
+
+
+
+
