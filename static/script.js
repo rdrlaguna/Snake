@@ -48,16 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize speed variable
     let speed = {x: 10, y: 0};
-    let food = createFood(canvas, snake);
+    let food = Snake.createFood(canvas, snake);
 
     const motion = setInterval( function() {
-        Snake.clearCanvas(context, canvas); 
-        drawFood(food, context);  
-        Snake.advance(snake, canvas, speed);    
+        Snake.clearCanvas(context, canvas);
+        Snake.drawFood(food, context);  
+        Snake.advance(snake, canvas, speed, food);    
         Snake.drawSnake(snake, context);
-    }, 200);
+    }, 100);
 
-    
     
     // Listen for a pressed key
     document.addEventListener('keydown', function(event) {
@@ -94,40 +93,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
-    createFood(canvas, snake, context);
-
 })
 
 
-// Generate random set of coordinates for food
-    // If food is where snake is
-        // Generate new set of coordinates
-// Print food
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
 
-function createFood(canvas, snake) {
 
-    let food = {
-        x: getRandomInt(canvas.width - 10),
-        y : getRandomInt(canvas.height - 10)
-    }
 
-    for (let i = 0; i < snake.length; i++) {
-        if ((snake[i].x == food.x) && (snake[i].y === food.y)) {
-            food(canvas, snake);
-        }
-    }
-
-    return food;
-}
-
-function drawFood(food, ctx) {
-    ctx.fillStyle = 'red'; 
-    ctx.strokestyle = 'darkred'; 
-
-    ctx.fillRect(food.x, food.y, 15, 15); 
-    ctx.strokeRect(food.x, food.y, 15, 15);
-}

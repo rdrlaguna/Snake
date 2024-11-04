@@ -50,22 +50,25 @@ function clearCanvas(ctx, canvas) {
  * @param {{x:number, y:number}} speed - An object with 'x' and 'y' coordinates, representing direction.
  * @returns {void}
  */
-function advance(snake, canvas, speed) {
+function advance(snake, canvas, speed, food) {
 
     const head ={x: snake[0].x + speed.x, y: snake[0].y + speed.y}
-
-    // Check if hits wall
-    const topWall = 0;
-    const rightWall = canvas.width - 10;
-    const bottomWall = canvas.height -10;
-    const leftWall =  0;
     
     if (didHitWall(head, canvas, snake)) {
         return         
     }
 
     snake.unshift(head);
-    snake.pop();
+
+
+    if (didEat(head, food)) {
+        let newFood = createFood(canvas, snake);
+        food.x = newFood.x;
+        food.y = newFood.y;
+    } else {
+        snake.pop();
+    }
+    
 }
 
 
@@ -107,10 +110,61 @@ function didHitWall(head, canvas, snake) {
 }
 
 
+// Generate random set of coordinates for food
+    // If food is where snake is
+        // Generate new set of coordinates
+function createFood(canvas, snake) {
+
+    let food = {
+        x: getRandomInt(canvas.width - 10),
+        y : getRandomInt(canvas.height - 10)
+    }
+        
+    for (let i = 0; i < snake.length; i++) {
+        if ((snake[i].x == food.x) && (snake[i].y === food.y)) {
+            food(canvas, snake);
+        }
+    }
+        
+    return food;
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+// Print food
+function drawFood(food, ctx) {
+    ctx.fillStyle = 'red'; 
+    ctx.strokestyle = 'darkred'; 
+
+    ctx.fillRect(food.x, food.y, 10, 10); 
+    ctx.strokeRect(food.x, food.y, 10, 10);
+}
+
+
+function didEat(head, food) {
+
+    // Food limits
+    const topFood = food.y - 10;
+    const rightFood = food.x + 10;
+    const bottomFood = food.y + 10;
+    const leftFood = food.x - 10;
+
+    if ((head.x < rightFood && head.x > leftFood) && 
+        (head.y > topFood && head.y < bottomFood)) {
+        return true;
+    }
+    return false;
+}
+
+
 const Snake = {
     drawSnake,
     clearCanvas,
-    advance
+    advance,
+    createFood,
+    drawFood
 };
 
 export default Snake;
