@@ -111,7 +111,7 @@ function didHitWall(head, canvas, snake) {
 
 
 /**
- * Generates a new food element for the snake.
+ * Generate a new food element for the snake.
  * 
  * This function creates a new food element setting its 'x' and 'y' coordinates.
  * It checks if the food coordinates collide with the snake's body, calling the
@@ -139,10 +139,10 @@ function createFood(canvas, snake) {
 
 
 /**
- * Generates a random number.
+ * Generate a random number.
  * 
- * This function takes a number as an argument and returns
- * a random number that will be smaller than the argument.
+ * This function takes a number as an argument. It returns
+ * a random number smaller than the argument.
  *
  * @param {number} max - The maximum number the function can return.
  * @returns {number} - Returns a number random number up to the argument.
@@ -152,7 +152,17 @@ function getRandomInt(max) {
 }
 
 
-// Print food
+/**
+ * Draw the food element on canvas.
+ * 
+ * This function draws a red square on the canvas representing the 
+ * snake's food. It takes the food coordinates and the canvas context
+ * object as arguments. It does not return any value.
+ * 
+ * @param {{x: number, y: number}} food - An object with 'x' and 'y' coordinates.
+ * @param {CanvasRenderingContext2D} ctx - The canvas object to draw on.
+ * @returns {void}
+ */
 function drawFood(food, ctx) {
     ctx.fillStyle = 'red'; 
     ctx.strokestyle = 'darkred'; 
@@ -162,9 +172,19 @@ function drawFood(food, ctx) {
 }
 
 
+/**
+ * Check if the snake has eaten the food.
+ * 
+ * This function checks if the snake's head touches the food element.
+ * It takes as arguments coordinates of the the head and the food.
+ * If the snake touches the food, returns 'true', otherwise returns 'false'.
+ *
+ * @param {{x: number, y: number}} head - An object with 'x' and 'y' coordinates.
+ * @param {{x: number, y: number}} food - An object with 'x' and 'y' coordinates.
+ * @returns {boolean} - Returns 'true' when the head touche the food, 'false' if it does not.
+ */
 function didEat(head, food) {
 
-    // Food limits
     const topFood = food.y - 10;
     const rightFood = food.x + 10;
     const bottomFood = food.y + 10;
