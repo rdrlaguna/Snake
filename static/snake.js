@@ -82,7 +82,7 @@ function advance(snake, canvas, speed, food) {
  *
  * @param {{x: number, y: number}} head - An object with 'x' and 'y' coordinates.
  * @param {HTMLCanvasElement} canvas - An html canvas element.
- * @param {{x: number, y: number}[]} - An array of objects, each with 'x' and 'y' coordinates.
+ * @param {{x: number, y: number}[]} snake - An array of objects, each with 'x' and 'y' coordinates.
  * @returns {boolean} - Returns 'true' when the head hits a wall, 'false' if it does not.
  */
 function didHitWall(head, canvas, snake) {
@@ -110,14 +110,22 @@ function didHitWall(head, canvas, snake) {
 }
 
 
-// Generate random set of coordinates for food
-    // If food is where snake is
-        // Generate new set of coordinates
+/**
+ * Generates a new food element for the snake.
+ * 
+ * This function creates a new food element setting its 'x' and 'y' coordinates.
+ * It checks if the food coordinates collide with the snake's body, calling the
+ * the function again if that happens. Returns an object with the food coordinates.
+ *
+ * @param {HTMLCanvasElement} canvas - An html canvas element.
+ * @param {{x: number, y: number}[]} snake - An array of objects, each with 'x' and 'y' coordinates.
+ * @returns {{x: number, y: number}} - Returns an object with 'x' and 'y' coordinates.
+ */
 function createFood(canvas, snake) {
 
     let food = {
         x: getRandomInt(canvas.width - 10),
-        y : getRandomInt(canvas.height - 10)
+        y: getRandomInt(canvas.height - 10)
     }
         
     for (let i = 0; i < snake.length; i++) {
@@ -129,9 +137,20 @@ function createFood(canvas, snake) {
     return food;
 }
 
+
+/**
+ * Generates a random number.
+ * 
+ * This function takes a number as an argument and returns
+ * a random number that will be smaller than the argument.
+ *
+ * @param {number} max - The maximum number the function can return.
+ * @returns {number} - Returns a number random number up to the argument.
+ */
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
+
 
 // Print food
 function drawFood(food, ctx) {
