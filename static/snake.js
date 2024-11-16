@@ -13,6 +13,29 @@ export class Snake {
         // Move snake
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
+        // Add new segment to the beginning
+        this.segments.unshift(
+            {
+                x: this.position.x,
+                y: this.position.y
+            }
+        )
+    }
+    draw(context, size) {
+        this.segments.forEach((segment, i) => {
+            // Differenciate snake's head
+            if (i === 0) context.fillStyle = 'gold';
+            else context.fillStyle = 'green';
+
+            // Draw snake
+            context.fillRect (
+                segment.x * size,
+                segment.y * size,
+                size,
+                size
+            );
+        })
+
     }
 }
 
@@ -224,7 +247,7 @@ function didEat(head, food) {
     return false;
 }
 
-
+/*
 const Snake = {
     drawSnake,
     clearCanvas,
@@ -234,3 +257,4 @@ const Snake = {
 };
 
 export default Snake;
+*/
