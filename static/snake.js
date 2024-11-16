@@ -47,15 +47,17 @@ function clearCanvas(ctx, canvas) {
  *
  * @param {{x: number, y: number}[]} snake - An array of objects, each with 'x' and 'y' coordinates.
  * @param {HTMLCanvasElement} canvas - An html canvas element.
- * @param {{x:number, y:number}} speed - An object with 'x' and 'y' coordinates, representing direction.
+ * @param {{x: number, y: number}} speed - An object with 'x' and 'y' coordinates, representing direction.
+ * @param {{x: number, y: number}} food - An object with 'x' and 'y' coordinates.
+ * @param {{s: number}} sore - An object with the value of the current score.
  * @returns {void}
  */
-function advance(snake, canvas, speed, food) {
+function advance(snake, canvas, speed, food, score) {
 
     const head ={x: snake[0].x + speed.x, y: snake[0].y + speed.y}
     
     if (didHitWall(head, canvas, snake)) {
-        return         
+        return
     }
 
     snake.unshift(head);
@@ -65,6 +67,9 @@ function advance(snake, canvas, speed, food) {
         let newFood = createFood(canvas, snake);
         food.x = newFood.x;
         food.y = newFood.y;
+
+        score.s += 10;
+        document.getElementById('score').innerHTML = score.s;
     } else {
         snake.pop();
     }
