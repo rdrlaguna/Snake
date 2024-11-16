@@ -1,5 +1,23 @@
 // Library functions for the Snake project
 
+
+export class Snake {
+    constructor(rows) {
+        this.position = {x: 0, y: Math.floor(rows/2)},
+        this.velocity = {x: 1, y: 0},
+
+        this.length = 3,
+        this.segments = []
+    }
+    update() {
+        // Move snake
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
+    }
+}
+
+
+
 /**
  * Draw a complete snake on canvas.
  * 
