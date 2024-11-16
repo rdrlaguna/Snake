@@ -9,15 +9,18 @@
  *
  * @param {{x: number, y: number}[]} snake - An array of objects, each with 'x' and 'y' coordinates.
  * @param {CanvasRenderingContext2D} ctx - The canvas to draw on.
+ * @param {number} size - The size of each snake body part.
  * @returns {void}
  */
-function drawSnake(snake, ctx) {
+function drawSnake(snake, ctx, size) {
 
     for (let i = 0; i < snake.length; i++) {
         ctx.fillStyle = 'lightgreen';
         ctx.strokestyle = 'darkgreen';
-        ctx.fillRect(snake[i].x, snake[i].y, 10, 10);
-        ctx.strokeRect(snake[i].x, snake[i].y, 10, 10);
+        ctx.fillRect(snake[i].x, snake[i].y, size, size);
+        ctx.beginPath();
+        ctx.strokeRect(snake[i].x, snake[i].y, size, size);
+        ctx.stroke();
     }
 }
 
@@ -166,14 +169,15 @@ function getRandomInt(max) {
  * 
  * @param {{x: number, y: number}} food - An object with 'x' and 'y' coordinates.
  * @param {CanvasRenderingContext2D} ctx - The canvas object to draw on.
+ * @param {number} size - The size of the food.
  * @returns {void}
  */
-function drawFood(food, ctx) {
+function drawFood(food, ctx, size) {
     ctx.fillStyle = 'red'; 
-    ctx.strokestyle = 'darkred'; 
+    ctx.strokestyle = 'darkred';
 
-    ctx.fillRect(food.x, food.y, 10, 10); 
-    ctx.strokeRect(food.x, food.y, 10, 10);
+    ctx.fillRect(food.x, food.y, size, size); 
+    ctx.strokeRect(food.x, food.y, size, size);
 }
 
 

@@ -3,6 +3,12 @@ import Snake from "./snake.js";
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
 
+
+
+
+
+
+    /*
     // Find canvas element
     const canvas = document.getElementById('canvas1');
 
@@ -10,14 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const context = canvas.getContext('2d');
 
     // Set canvas size to html element size
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+    canvas.width = GAME.width;
+    canvas.height = GAME.height;
 
     // Prevent re-scaling
     window.addEventListener('resize', function(snake) {
     // Adjust canvas size when window is resized
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
+        canvas.width = GAME.width;
+        canvas.height = GAME.height;
 
         // Set initial coordinates
         const initialX = canvas.width / 2;
@@ -29,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             {x: initialX, y: initialY},
             {x: initialX - 10, y: initialY},
         ];
-        Snake.drawSnake(snake, context);
+        Snake.drawSnake(snake, context, CELL_SIZE);
     })
 
     // Set initial coordinates
@@ -44,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // Draw snake on canvas
-    Snake.drawSnake(snake, context);
+    Snake.drawSnake(snake, context, CELL_SIZE);
 
     // Initialize game variables
     let speed = {x: 10, y: 0};
@@ -53,9 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const motion = setInterval( function() {
         Snake.clearCanvas(context, canvas);
-        Snake.drawFood(food, context);  
+        Snake.drawFood(food, context, CELL_SIZE);  
         Snake.advance(snake, canvas, speed, food, score);    
-        Snake.drawSnake(snake, context);
+        Snake.drawSnake(snake, context, CELL_SIZE);
     }, 100);
 
     
@@ -93,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
         }
     })
+    */
 
 })
 
