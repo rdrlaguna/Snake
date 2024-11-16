@@ -7,7 +7,7 @@ export class Snake {
         this.velocity = {x: 1, y: 0},
 
         this.length = 3,
-        this.segments = []
+        this.segments = [this.position]
     }
     update() {
         // Move snake
@@ -22,10 +22,13 @@ export class Snake {
         )
     }
     draw(context, size) {
+        console.log(this.segments);
         this.segments.forEach((segment, i) => {
             // Differenciate snake's head
             if (i === 0) context.fillStyle = 'gold';
             else context.fillStyle = 'green';
+            console.log('test');
+            console.log(segment);
 
             // Draw snake
             context.fillRect (

@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     canvas.width = GAME.width;
     canvas.height = GAME.height;
 
-    console.log(canvas.height);
+    const snake = new Snake(ROWS);
+    snake.draw(ctx, CELL_SIZE);
 
-    ctx.fillStyle = 'white';
-    ctx.fillRect(canvas.width/2, canvas.height/2, CELL_SIZE, CELL_SIZE);
+    console.log(snake);
 
 })
