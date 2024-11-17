@@ -23,13 +23,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Change position
         snake.update()
+
+        // Check for collision
+        // Check for collision with walls
+        if (
+            snake.position.x < 0 ||
+            snake.position.x > COLUMNS - 1 ||
+            snake.position.y < 0 ||
+            snake.position.y > ROWS - 1
+        ) {
+            GAME.gameOver = true;
+        }
+
+        // Check for Game Over
+        if (GAME.gameOver) {
+            // Stop snake's motion
+            clearInterval(GAME.loop);
+        }
     }
 
     // animate snake
     GAME.loop = setInterval(animate, 250);
 
 
-    // listen for pressed keys on keyboard
+    // Listen for pressed keys on keyboard
     window.addEventListener('keydown', function(event){
         if (event.key === 'ArrowUp') snake.moveUp();
         else if (event.key === 'ArrowDown') snake.moveDown();
