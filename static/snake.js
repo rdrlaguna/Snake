@@ -7,7 +7,7 @@ export class Snake {
         this.velocity = {x: 1, y: 0},
 
         this.length = 3,
-        this.segments = [this.position]
+        this.segments = []
     }
     update() {
         // Move snake
@@ -19,7 +19,11 @@ export class Snake {
                 x: this.position.x,
                 y: this.position.y
             }
-        )
+        );
+        // Remove last element from array
+        if (this.segments.length > this.length) {
+            this.segments.pop();
+        }
     }
     draw(context, size) {
         console.log(this.segments);
