@@ -1,6 +1,5 @@
 import {Snake} from "./snake.js"
-
-
+import {Food} from "./food.js"
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -11,15 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
     canvas.width = GAME.width;
     canvas.height = GAME.height;
 
+    // Create snake and food objects
     const snake = new Snake(ROWS);
-    snake.draw(ctx, CELL_SIZE);
+    const food = new Food(COLUMNS, ROWS);
 
     function animate() {
         // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw snake
-        snake.draw(ctx, CELL_SIZE)
+        // Draw snake and food
+        snake.draw(ctx, CELL_SIZE);
+        food.draw(ctx, CELL_SIZE);
 
         // Change position
         snake.update()
@@ -37,6 +38,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Check for Game Over
         if (GAME.gameOver) {
+            // Display game over message
+            ctx.textAlign = 'center';
+            ctx.fillStyle = 'black';
+            ctx.font = '60px Impact'; 
+            ctx.fillText(
+                'GAME OVER!',
+                GAME.width * 0.5,
+                GAME.height * 0.4,
+                // Max width of text
+                GAME.height * 0.95
+            );
             // Stop snake's motion
             clearInterval(GAME.loop);
         }
