@@ -26,13 +26,10 @@ export class Snake {
         }
     }
     draw(context, size) {
-        console.log(this.segments);
         this.segments.forEach((segment, i) => {
             // Differenciate snake's head
             if (i === 0) context.fillStyle = 'gold';
             else context.fillStyle = 'green';
-            console.log('test');
-            console.log(segment);
 
             // Draw snake
             context.fillRect (
@@ -42,7 +39,32 @@ export class Snake {
                 size
             );
         })
+    }
 
+     // Control snake direction
+     moveUp() {
+        if (this.velocity.y === 0) {
+            this.velocity.x = 0;
+            this.velocity.y = -1;    
+        }
+    }
+    moveDown() {
+        if (this.velocity.y === 0) {
+            this.velocity.x = 0;
+            this.velocity.y = 1;
+        }
+    }
+    moveLeft() {
+        if (this.velocity.x === 0) {
+            this.velocity.x = -1;
+            this.velocity.y = 0;
+        }
+    }
+    moveRight() {
+        if (this.velocity.x === 0) {
+            this.velocity.x = 1;
+            this.velocity.y = 0;
+        }
     }
 }
 

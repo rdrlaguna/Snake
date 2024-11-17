@@ -1,5 +1,8 @@
 import {Snake} from "./snake.js"
 
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
 
     // Canvas configuration
@@ -22,7 +25,17 @@ document.addEventListener('DOMContentLoaded', function() {
         snake.update()
     }
 
-    // Animate snake
+    // animate snake
     GAME.loop = setInterval(animate, 250);
 
+
+    // listen for pressed keys on keyboard
+    window.addEventListener('keydown', function(event){
+        if (event.key === 'ArrowUp') snake.moveUp();
+        else if (event.key === 'ArrowDown') snake.moveDown();
+        else if (event.key === 'ArrowLeft') snake.moveLeft();
+        else if (event.key === 'ArrowRight') snake.moveRight();   
+    });
+
 })
+
