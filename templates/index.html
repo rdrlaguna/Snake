@@ -23,10 +23,28 @@
 
 {% block main %}
 
-    <div id="modal-back" class="f f-cntr">
+    <div id="modal-start" class="modal-back f f-cntr">
         <!-- Modal box -->
-        <dialog id="modal-box">
+        <dialog id="modal-start-box">
             <button autofocus id="play-btn">Play</button>
+        </dialog>
+    </div>
+
+    <div id="modal-end" class="modal-back f f-cntr">
+        <!-- Modal box -->
+        <dialog id="modal-end-box" class="flex f-col">
+            <button autofocus id="close-btn">X</button>
+            <h>GAME OVER</h1>
+            <br>
+            <p>SCORE</p>
+            <p>TIME</p>
+
+            <form>
+                <input autofocus type="text">
+            </form>
+
+            <button>restart</button>
+
         </dialog>
     </div>
     

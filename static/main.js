@@ -4,12 +4,15 @@ import {Food} from "./food.js"
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Get modal and play button
-    const modal = document.getElementById('modal-back');
+    // Get modal-start and play button
+    const modalStart = document.getElementById('modal-start');
     const playButton = document.getElementById('play-btn');
 
-    // Open modal
-    modal.style.display = "flex";
+    // Get modal-end
+    const modalEnd = document.getElementById('modal-end');
+
+    // Open modal-start
+    modalStart.style.display = "flex";
 
     // Canvas configuration
     const canvas = document.getElementById('canvas1');
@@ -52,26 +55,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Check for Game Over
         if (GAME.gameOver) {
-            // Display game over message
-            ctx.textAlign = 'center';
-            ctx.fillStyle = 'black';
-            ctx.font = '60px Impact'; 
-            ctx.fillText(
-                'GAME OVER!',
-                GAME.width * 0.5,
-                GAME.height * 0.4,
-                // Max width of text
-                GAME.height * 0.95
-            );
             // Stop snake's motion
             clearInterval(GAME.loop);
+
+            // Open modal-end
+            modalEnd.style.display = "flex";
         }
     }
 
     // Animate snake when user hits play
     playButton.onclick = function() {
-        // Close modal
-        modal.style.display = "none";
+        // Close modalStart
+        modalStart.style.display = "none";
         GAME.loop = setInterval(animate, 250);
     }
     
