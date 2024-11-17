@@ -79,15 +79,32 @@ export class Snake {
  * @returns {boolean} - Returns true if the game is over, otherwise false.
  */
 function isGameOver(snake, width, height) {
+
+    let gameOver = false;
+
+    // Checks if snake hits its tail
+    for (let i = 0; i < snake.segments.length; i++) {
+        // console.log(segment);
+        if (i > 0 && (
+            snake.segments[i].x === snake.position.x &&
+            snake.segments[i].y === snake.position.y
+        )) {
+            gameOver = true;
+            break;
+        }
+    }
+
+    // Checks if snake hits walls
     if (
         snake.position.x < 0 ||
         snake.position.x > width - 1 ||
         snake.position.y < 0 ||
         snake.position.y > height - 1
     ) {
-        return true;
-    }
-    return false;
+        gameOver = true;
+    } 
+    
+    return gameOver;
 }
 
 
