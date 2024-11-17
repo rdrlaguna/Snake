@@ -25,6 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Change position
         snake.update()
 
+        // Check if snake eats food
+        if (
+            snake.position.x === food.x &&
+            snake.position.y === food.y
+        ) {
+            // Change food location
+            food.reset(COLUMNS, ROWS);
+            // Increase snake lenght and score
+            snake.length++;
+            snake.score++;
+        }
+
         // Check for collision
         // Check for collision with walls
         if (
@@ -54,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // animate snake
+    // Animate snake
     GAME.loop = setInterval(animate, 250);
 
 
