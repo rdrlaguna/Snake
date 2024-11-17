@@ -1,4 +1,4 @@
-import {Snake} from "./snake.js"
+import MySnake, {Snake} from "./snake.js"
 import {Food} from "./food.js"
 
 
@@ -39,12 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Check for collision
         // Check for collision with walls
-        if (
-            snake.position.x < 0 ||
-            snake.position.x > COLUMNS - 1 ||
-            snake.position.y < 0 ||
-            snake.position.y > ROWS - 1
-        ) {
+        if (MySnake.isGameOver(snake, COLUMNS, ROWS)) {
             GAME.gameOver = true;
         }
 
