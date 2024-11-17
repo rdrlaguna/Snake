@@ -4,6 +4,13 @@ import {Food} from "./food.js"
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Get modal and play button
+    const modal = document.getElementById('modal-back');
+    const playButton = document.getElementById('play-btn');
+
+    // Open modal
+    modal.style.display = "flex";
+
     // Canvas configuration
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
@@ -61,8 +68,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Animate snake
-    GAME.loop = setInterval(animate, 250);
+    // Animate snake when user hits play
+    playButton.onclick = function() {
+        // Close modal
+        modal.style.display = "none";
+        GAME.loop = setInterval(animate, 250);
+    }
+    
 
 
     // Listen for pressed keys on keyboard
