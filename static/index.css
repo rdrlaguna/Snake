@@ -95,7 +95,7 @@
     font-size: 3rem;
 }
 .modal-stats {
-    margin: 0;
+    margin: 0 0 2rem 0;
 }
 .modal-stats > p,
 .score-form > p {
@@ -111,6 +111,15 @@
     font-family: 'Press Start 2P', sans-serif;
     background-color: transparent;
     border: none;
+}
+#restart-btn {
+    align-self: center;
+    width: 60%;
+    height: 2rem;
+
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1rem;
+
 }
 
 #play-btn {
