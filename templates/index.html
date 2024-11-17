@@ -32,19 +32,24 @@
 
     <div id="modal-end" class="modal-back f f-cntr">
         <!-- Modal box -->
-        <dialog id="modal-end-box" class="flex f-col">
-            <button autofocus id="close-btn">X</button>
-            <h>GAME OVER</h1>
-            <br>
-            <p>SCORE</p>
-            <p>TIME</p>
+        <dialog id="modal-end-box" class="flex f-cntr">
+            <div id="modal-end-content" class="flex f-col">
+                <button autofocus id="modal-close-btn">X</button>
 
-            <form>
-                <input autofocus type="text">
-            </form>
+                <h3>GAME OVER</h3>
+                <br>
 
-            <button>restart</button>
+                <div class="stats">
+                    <p>SCORE</p>
+                    <p>TIME</p>
+                </div>
 
+                <form>
+                    <input autofocus type="text">
+                </form>
+
+                <button id="restart-btn">restart</button>
+            </div>
         </dialog>
     </div>
     
