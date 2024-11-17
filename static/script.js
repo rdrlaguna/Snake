@@ -1,98 +1,33 @@
-import Snake from "./snake.js";
+import {Snake} from "./snake.js";
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Find canvas element
+    // Canvas configuration
     const canvas = document.getElementById('canvas1');
+    const ctx = canvas.getContext('2d');
+    canvas.width = GAME.width;
+    canvas.height = GAME.height;
 
-    // Create a context object
-    const context = canvas.getContext('2d');
+    let snake = new Snake(ROWS);
 
-    // Set canvas size to html element size
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+    snake.draw(ctx, CELL_SIZE);
+    console.log(snake);
 
-    // Prevent re-scaling
-    window.addEventListener('resize', function(snake) {
-    // Adjust canvas size when window is resized
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
+    ctx.fillStyle = 'white';
+    ctx.fillRect = (50, 50, CELL_SIZE, CELL_SIZE);
 
-        // Set initial coordinates
-        const initialX = canvas.width / 2;
-        const initialY = canvas.height / 2;
-    
-        // Represent snake using coordinates
-        snake = [
-            {x: initialX + 10, y: initialY},
-            {x: initialX, y: initialY},
-            {x: initialX - 10, y: initialY},
-        ];
-        Snake.drawSnake(snake, context);
-    })
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Set initial coordinates
-    const initialX = canvas.width / 2;
-    const initialY = canvas.height / 2;
-    
-    // Represent snake using coordinates
-    let snake = [
-        {x: initialX + 10, y: initialY},
-        {x: initialX, y: initialY},
-        {x: initialX - 10, y: initialY},
-    ];
+        snake.draw(ctx, CELL_SIZE);
 
-    // Draw snake on canvas
-    Snake.drawSnake(snake, context);
+        // Update position
+        snake.update();
+    }
 
-    // Initialize game variables
-    let speed = {x: 10, y: 0};
-    let food = Snake.createFood(canvas, snake);
-    let score = {s: 0};
+    //animate();
 
-    const motion = setInterval( function() {
-        Snake.clearCanvas(context, canvas);
-        Snake.drawFood(food, context);  
-        Snake.advance(snake, canvas, speed, food, score);    
-        Snake.drawSnake(snake, context);
-    }, 100);
-
-    
-    // Listen for a pressed key
-    document.addEventListener('keydown', function(event) {
-        
-        switch(event.key) {
-            case 'ArrowUp':
-                speed.x = 0;
-                speed.y = -10;
-                break;
-
-            case 'ArrowRight':
-                speed.x = 10;
-                speed.y = 0;
-                break;
-
-            case 'ArrowDown':
-                speed.x = 0;
-                speed.y = 10;
-                break;
-
-            case 'ArrowLeft':
-                speed.x = -10;
-                speed.y = 0;
-                break;
-
-            case ' ':
-                clearInterval(motion);
-                break;
-
-            default:
-                speed.x = 10;
-                speed.y = 0;
-                break;
-        }
-    })
 
 })
 
