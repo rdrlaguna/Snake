@@ -4,6 +4,17 @@ import {Food} from "./food.js"
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Get modal-start and play button
+    const modalStart = document.getElementById('modal-start');
+    const playButton = document.getElementById('play-btn');
+
+    // Get modal-end
+    const modalEnd = document.getElementById('modal-end');
+    const playerName = document.getElementById('player-name');
+
+    // Open modal-start
+    modalStart.style.display = "flex";
+
     // Canvas configuration
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
@@ -45,24 +56,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Check for Game Over
         if (GAME.gameOver) {
-            // Display game over message
-            ctx.textAlign = 'center';
-            ctx.fillStyle = 'black';
-            ctx.font = '60px Impact'; 
-            ctx.fillText(
-                'GAME OVER!',
-                GAME.width * 0.5,
-                GAME.height * 0.4,
-                // Max width of text
-                GAME.height * 0.95
-            );
             // Stop snake's motion
             clearInterval(GAME.loop);
+
+            // Open modal-end
+            modalEnd.style.display = "flex";
+            // Set cursor on input field
+            playerName.focus();
+            playerName.select();
         }
     }
 
-    // Animate snake
-    GAME.loop = setInterval(animate, 250);
+    // Animate snake when user hits play
+    playButton.onclick = function() {
+        // Close modalStart
+        modalStart.style.display = "none";
+        GAME.loop = setInterval(animate, 250);
+    }
+    
 
 
     // Listen for pressed keys on keyboard

@@ -2,7 +2,8 @@
 
 {% block links %}
 
-    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="../static/styles/modal.css">
+    <link rel="stylesheet" href="../static/styles/index.css">
     <script src="../static/constants.js"></script>
     <script type="module" src="../static/main.js"></script>
 
@@ -22,6 +23,38 @@
 {% endblock %}
 
 {% block main %}
+
+    <div id="modal-start" class="modal-back f f-cntr">
+        <!-- Modal box -->
+        <dialog id="modal-start-box">
+            <button autofocus id="play-btn">Play</button>
+        </dialog>
+    </div>
+
+    <div id="modal-end" class="modal-back f f-cntr">
+        <!-- Modal box -->
+        <dialog id="modal-end-box" class="flex f-cntr">
+            <div id="modal-end-content" class="flex f-col">
+                <button autofocus id="modal-close-btn">X</button>
+
+                <h3>GAME OVER</h3>
+                <br>
+
+                <div class="modal-stats">
+                    <p>SCORE</p>
+                    <p>TIME</p>
+                </div>
+
+                <form class="score-form flex f-cntr f-col">
+                    <p>RECORD YOUR NAME</p>
+                    <input id="player-name" name="player-name" type="text" autofocus>
+                </form>
+
+                <button id="restart-btn">RESTART</button>
+            </div>
+        </dialog>
+    </div>
+    
 
    <canvas id="canvas1"></canvas>
 
