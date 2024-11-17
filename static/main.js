@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Get modal-end
     const modalEnd = document.getElementById('modal-end');
+    const playerName = document.getElementById('player-name');
 
     // Open modal-start
     modalStart.style.display = "flex";
@@ -60,6 +61,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Open modal-end
             modalEnd.style.display = "flex";
+            // Set cursor on input field
+            playerName.focus();
+            playerName.select();
         }
     }
 
